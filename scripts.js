@@ -4,7 +4,19 @@ var latinPig = function(str) {
   var newStr = str.map(function(word) {
     if (/[aeiou]/.test(word.charAt(0)) === true) { //if first letter is vowel
       return word + "ay";
-    } else if (/[aeiou]/.test(word.charAt(0)) === false) { //if first letter is consonant
+    } else if (word.startsWith("q") === true && word.charAt(1) === "u") {// "q u" code block
+        var quStart = [];
+        var wordArray = word.split('');
+         quStart.push(wordArray[0]);
+         quStart.push(wordArray[1]);
+         wordArray.splice(0, quStart.length);
+         wordArray.push(quStart.join("") + "ay");
+         return wordArray.join('');
+
+
+    }
+
+    else if (/[aeiou]/.test(word.charAt(0)) === false) { //if first letter is consonant
       var wordArray = word.split("");
       console.log(wordArray);
       var consonantStart = [];
@@ -31,4 +43,4 @@ var latinPig = function(str) {
 
 }; //end of function
 
-latinPig("For words that start with one or more consonants, move all of the first consecutive consonants to the end and add");
+latinPig("wheeling and squealing on qualudes");
